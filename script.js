@@ -21,7 +21,9 @@ const handleGuess = () => {
     return;
   }
 
-  guessesArray.push(userGuess);
+  // guessesArray.push(userGuess);
+
+  guessesArray[guessesArray.length] = userGuess;
 
   if (userGuess == biaNumber) {
     changeByResult.classList.remove("guessing");
