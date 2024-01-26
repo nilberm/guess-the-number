@@ -15,13 +15,13 @@ const handleGuess = () => {
 
   const userGuess = document.getElementById("guess-number").value;
 
-  guessesArray.push(userGuess);
-
   if (userGuess > 100 || userGuess < 0) {
     alert("Número precisa ser entre 0 e 100");
     document.getElementById("guess-number").value = "";
     return;
   }
+
+  guessesArray.push(userGuess);
 
   if (userGuess == biaNumber) {
     changeByResult.classList.remove("guessing");
@@ -42,7 +42,18 @@ const handleGuess = () => {
     if (userGuess < biaNumber) {
       alert("Bia pensou em um número MAIOR");
     }
-    guesses.innerHTML = guessesArray.join(" - ");
+
+    // guesses.innerHTML = guessesArray.join(" - ");
+
+    guesses.innerHTML = "";
+
+    for (let i = 0; i < guessesArray.length; i++) {
+      guesses.innerHTML += guessesArray[i];
+      if (i < guessesArray.length - 1) {
+        guesses.innerHTML += " - ";
+      }
+    }
+
     document.getElementById("guess-number").value = "";
   }
 };
